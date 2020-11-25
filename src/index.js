@@ -32,14 +32,19 @@ function App() {
     return (
         <div className="body__app app">
             <ul className="app__comments-list">
-                {comments.map((comment, index) => (
-                    <Comment
-                        key={index}
-                        index={index}
-                        comment={comment}
-                        removeComment={removeComment}
-                    />
-                ))}
+                {comments.length 
+                    ? comments.map((comment, index) => (
+                        <Comment
+                            key={index}
+                            index={index}
+                            comment={comment}
+                            removeComment={removeComment}
+                        />
+                    ))
+                    : <p
+                        className="app__p-no-comments"
+                    >Новых комментариев нет</p>
+                }
             </ul>
             <CommentForm
                 addComment={addComment}
