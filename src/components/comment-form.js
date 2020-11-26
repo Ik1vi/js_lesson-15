@@ -5,6 +5,10 @@ export function CommentForm(props) {
 
     const [textName, setTextName] = React.useState("");
 
+    const getCurrentDatetime = () => {
+        return new Date().toLocaleString();
+    }
+
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -12,7 +16,7 @@ export function CommentForm(props) {
             alert('Дополните данные');
             return;
         }
-        props.addComment(textName, textComment, props.getCurrentDatetime() );
+        props.addComment(textName, textComment, getCurrentDatetime());
         setTextComment("");
         setTextName("");
     };
@@ -38,7 +42,7 @@ export function CommentForm(props) {
                 onChange={e => setTextComment(e.target.value)}>
             </input>
 
-            <button 
+            <button
                 type="submit"
                 className="new-comment-form__btn">Отправить</button>
         </form>
